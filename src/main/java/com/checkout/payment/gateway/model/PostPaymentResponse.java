@@ -1,8 +1,12 @@
 package com.checkout.payment.gateway.model;
 
 import com.checkout.payment.gateway.enums.PaymentStatus;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
 public class PostPaymentResponse {
   private UUID id;
   private PaymentStatus status;

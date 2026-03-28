@@ -15,11 +15,21 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+dependencyManagement {
+  imports {
+    mavenBom "org.springframework.cloud:spring-cloud-dependencies:2022.0.5"
+  }
+}
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+dependencies {
+  compileOnly("org.projectlombok:lombok:1.18.44")
+  annotationProcessor("org.projectlombok:lombok:1.18.44")
+
+  implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+  implementation 'org.springframework.boot:spring-boot-starter-web'
+  implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0'
+
+  testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {

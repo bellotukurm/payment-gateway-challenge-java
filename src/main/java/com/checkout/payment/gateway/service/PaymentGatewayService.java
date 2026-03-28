@@ -43,15 +43,15 @@ public class PaymentGatewayService {
   }
 
   private BankPaymentRequest createBankPaymentRequest(PaymentRequest paymentRequest) {
-    var expiryMonth = String.format("%02d", paymentRequest.getExpiryMonth());
-    var expiryYear = Integer.toString(paymentRequest.getExpiryYear());
+    var expiryMonth = String.format("%02d", paymentRequest.expiryMonth());
+    var expiryYear = Integer.toString(paymentRequest.expiryYear());
     var expiryDate = String.join("/", expiryMonth, expiryYear);
     return new BankPaymentRequest(
-        paymentRequest.getCardNumber(),
+        paymentRequest.cardNumber(),
         expiryDate,
-        paymentRequest.getCurrency(),
-        paymentRequest.getAmount(),
-        paymentRequest.getCvv()
+        paymentRequest.currency(),
+        paymentRequest.amount(),
+        paymentRequest.cvv()
     );
   }
 
@@ -67,18 +67,18 @@ public class PaymentGatewayService {
   }
 
   private PostPaymentResponse createPostPaymentResponse(PaymentRequest paymentRequest, PaymentStatus paymentStatus) {
-    var last4 = paymentRequest.getCardNumber().length() >= 4
-        ? paymentRequest.getCardNumber().substring(paymentRequest.getCardNumber().length() - 4)
-        : paymentRequest.getCardNumber();
+    var last4 = paymentRequest.cardNumber().length() >= 4
+        ? paymentRequest.cardNumber().substring(paymentRequest.cardNumber().length() - 4)
+        : paymentRequest.cardNumber();
     var last4CardNumber = Integer.parseInt(last4);
     return new PostPaymentResponse(
         UUID.randomUUID(),
         paymentStatus,
         last4CardNumber,
-        paymentRequest.getExpiryMonth(),
-        paymentRequest.getExpiryYear(),
-        paymentRequest.getCurrency(),
-        paymentRequest.getAmount()
+        paymentRequest.expiryMonth(),
+        paymentRequest.expiryYear(),
+        paymentRequest.currency(),
+        paymentRequest.amount()
     );
   }
 }

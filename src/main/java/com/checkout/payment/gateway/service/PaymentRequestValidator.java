@@ -6,11 +6,11 @@ import java.time.YearMonth;
 
 public class PaymentRequestValidator {
   public static boolean isValid(PaymentRequest request) {
-    var validCardNumber = validateCardNumber(request.getCardNumber());
-    var validExpiryMonth = validateExpiryMonth(request.getExpiryMonth());
-    var validExpiry = validateExpiry(request.getExpiryYear(), request.getExpiryMonth());
-    var validCurrency = validateCurrency(request.getCurrency());
-    var validCvv = validateCvv(request.getCvv());
+    var validCardNumber = validateCardNumber(request.cardNumber());
+    var validExpiryMonth = validateExpiryMonth(request.expiryMonth());
+    var validExpiry = validateExpiry(request.expiryYear(), request.expiryMonth());
+    var validCurrency = validateCurrency(request.currency());
+    var validCvv = validateCvv(request.cvv());
     return validCardNumber && validExpiryMonth && validExpiry && validCurrency && validCvv;
   }
 

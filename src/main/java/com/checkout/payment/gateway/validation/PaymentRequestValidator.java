@@ -1,7 +1,8 @@
-package com.checkout.payment.gateway.service;
+package com.checkout.payment.gateway.validation;
 
 import com.checkout.payment.gateway.enums.CurrencyCode;
 import com.checkout.payment.gateway.model.PaymentRequest;
+import java.time.DateTimeException;
 import java.time.YearMonth;
 
 public class PaymentRequestValidator {
@@ -23,14 +24,18 @@ public class PaymentRequestValidator {
   }
 
   private static boolean validateExpiry(int expiryYear, int expiryMonth) {
-    YearMonth expiry = YearMonth.of(expiryYear, expiryMonth);
-    return expiry.isAfter(YearMonth.now());
+    try {
+      YearMonth expiry = YearMonth.of(expiryYear, expiryMonth);
+      return expiry.isAfter(YearMonth.now());
+    } catch (DateTimeException e) {
+      return false;
+    }
   }
 
   private static boolean validateCurrency(String currency) {
-    return currency.equals(CurrencyCode.GBP.toString()) ||
-        currency.equals(CurrencyCode.USD.toString()) ||
-        currency.equals(CurrencyCode.EUR.toString());
+    return CurrencyCode.GBP.toString().equals(currency) ||
+        CurrencyCode.USD.toString().equals(currency) ||
+        CurrencyCode.EUR.toString().equals(currency);
   }
 
   private static boolean validateCvv(String cvv) {

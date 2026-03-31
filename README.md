@@ -29,6 +29,7 @@ For documentation openAPI is included, and it can be found under the following u
 
 ### Requirements:
 - submit a card payment and process it (can be AUTHORIZED, DECLINED, or REJECTED)
+- validate payment request
 - retrieve the details of previously processed payment by its identifier
 
 ### Assumptions Made:

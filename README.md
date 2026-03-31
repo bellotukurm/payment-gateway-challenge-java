@@ -23,3 +23,21 @@ docker-compose.yml - configures the bank simulator
 For documentation openAPI is included, and it can be found under the following url: **http://localhost:8090/swagger-ui/index.html**
 
 **Feel free to change the structure of the solution, use a different library etc.**
+
+
+## Documenting Key Design Considerations
+
+### Requirements:
+- submit a card payment and process it (can be AUTHORIZED, DECLINED, or REJECTED)
+- retrieve the details of previously processed payment by its identifier
+
+### Assumptions Made:
+- Current System is not misleading e.g. I assumed PostPaymentResponse was already accurate, so I only added constructors.
+- It's okay to use the HashMap repository for persistence
+
+### Approach
+- Separated responsibilities (Following single responsibility principle):
+  - Controller
+  - Service
+  - Validator
+  - BankClient

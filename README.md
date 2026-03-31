@@ -35,6 +35,7 @@ For documentation openAPI is included, and it can be found under the following u
 ### Assumptions Made:
 - Current System is not misleading e.g. I assumed PostPaymentResponse was already accurate, so I only added constructors.
 - It's okay to use the HashMap repository for persistence
+- Assuming only up to 3 ISO currency codes are supported
 
 ### Approach
 - Separated responsibilities (Following single responsibility principle):

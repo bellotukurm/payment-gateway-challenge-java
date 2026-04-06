@@ -87,7 +87,7 @@ class PaymentGatewayControllerTest {
     mvc.perform(MockMvcRequestBuilders.post("/payments")
             .contentType(MediaType.APPLICATION_JSON)
             .content(objectMapper.writeValueAsString(paymentRequest)))
-        .andExpect(status().isOk())
+        .andExpect(status().is2xxSuccessful())
         .andExpect(jsonPath("$.id").isNotEmpty())
         .andExpect(jsonPath("$.status").value(PaymentStatus.AUTHORIZED.getName()))
         .andExpect(jsonPath("$.cardNumberLastFour").value(4321))

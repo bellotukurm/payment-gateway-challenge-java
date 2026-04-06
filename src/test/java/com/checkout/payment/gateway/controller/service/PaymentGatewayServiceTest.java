@@ -44,7 +44,7 @@ public class PaymentGatewayServiceTest {
     var expectedResponse = new PostPaymentResponse(
         paymentId,
         PaymentStatus.AUTHORIZED,
-        1111,
+        "1111",
         12,
         2030,
         CurrencyCode.GBP.toString(),
@@ -95,7 +95,7 @@ public class PaymentGatewayServiceTest {
 
     assertNotNull(response.getId());
     assertEquals(PaymentStatus.AUTHORIZED, response.getStatus());
-    assertEquals(1111, response.getCardNumberLastFour());
+    assertEquals("1111", response.getCardNumberLastFour());
     assertEquals(expiryMonth, response.getExpiryMonth());
     assertEquals(expiryYear, response.getExpiryYear());
     assertEquals(currencyCode, response.getCurrency());
@@ -141,7 +141,7 @@ public class PaymentGatewayServiceTest {
 
     assertNotNull(response.getId());
     assertEquals(PaymentStatus.DECLINED, response.getStatus());
-    assertEquals(1111, response.getCardNumberLastFour());
+    assertEquals("1111", response.getCardNumberLastFour());
     assertEquals(expiryMonth, response.getExpiryMonth());
     assertEquals(expiryYear, response.getExpiryYear());
     assertEquals(currencyCode, response.getCurrency());
@@ -182,7 +182,7 @@ public class PaymentGatewayServiceTest {
 
     assertNotNull(response.getId());
     assertEquals(PaymentStatus.REJECTED, response.getStatus());
-    assertEquals(1111, response.getCardNumberLastFour());
+    assertEquals("1111", response.getCardNumberLastFour());
     assertEquals(expiryMonth, response.getExpiryMonth());
     assertEquals(expiryYear, response.getExpiryYear());
     assertEquals(currencyCode, response.getCurrency());

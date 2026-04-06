@@ -71,7 +71,7 @@ public class PaymentGatewayService {
     var last4 = paymentRequest.cardNumber().length() >= 4
         ? paymentRequest.cardNumber().substring(paymentRequest.cardNumber().length() - 4)
         : paymentRequest.cardNumber();
-    var last4CardNumber = Integer.parseInt(last4);
+    var last4CardNumber = last4;
     return new PostPaymentResponse(
         UUID.randomUUID(),
         paymentStatus,
